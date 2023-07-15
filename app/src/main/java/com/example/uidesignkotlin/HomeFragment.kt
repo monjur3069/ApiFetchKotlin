@@ -7,13 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
 
 import androidx.fragment.app.activityViewModels
 import com.example.uidesignkotlin.databinding.FragmentHomeBinding
-import com.example.uidesignkotlin.models.NowPlayingModel
+import com.example.uidesignkotlin.models.MovieModel
 import com.example.uidesignkotlin.viewmodels.MovieViewModel
 
 
@@ -36,11 +34,11 @@ class HomeFragment : Fragment() {
         movieViewModel.fetchData()
 
         // Observe the LiveData after fetching data
-        movieViewModel.nowPlayingModelLD.observe(viewLifecycleOwner) { nowPlayingModel ->
+        movieViewModel.movieModelLD.observe(viewLifecycleOwner) { movieModel ->
             // Hide progress indicator
             binding.progressBar.visibility = View.GONE
-            setNowPlayingData(nowPlayingModel)
-            Log.d(TAG, "${nowPlayingModel.page}")
+            setMovieData(movieModel)
+            Log.d(TAG, "${movieModel.page}")
         }
         binding.appbarLeading.setOnClickListener {
             binding.homeDrawer.openDrawer(GravityCompat.START)
@@ -48,7 +46,7 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
-    private fun setNowPlayingData(nowPlayingModel: NowPlayingModel) {
-        binding.appbarTitle.text = nowPlayingModel.results[1].title
+    private fun setMovieData(movieModel: MovieModel) {
+        binding.appbarTitle.text = movieModel.results[1].title
     }
 }

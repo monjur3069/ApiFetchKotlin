@@ -1,6 +1,6 @@
 package com.example.uidesignkotlin.network
 
-import com.example.uidesignkotlin.models.NowPlayingModel
+import com.example.uidesignkotlin.models.MovieModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
@@ -15,7 +15,7 @@ val retrofit = Retrofit.Builder()
 
 interface MovieApi {
     @GET()
-    suspend fun getNowPlayingData(@Url endUrl: String) : NowPlayingModel
+    suspend fun getMovieData(@Url endUrl: String) : MovieModel
 }
 
 object NetworkService {

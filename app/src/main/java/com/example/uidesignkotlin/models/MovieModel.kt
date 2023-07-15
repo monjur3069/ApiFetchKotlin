@@ -1,7 +1,7 @@
 package com.example.uidesignkotlin.models
 import com.google.gson.annotations.SerializedName
 
-data class NowPlayingModel(
+data class MovieModel(
     @SerializedName("dates")
     val dates: Dates,
     @SerializedName("page")
